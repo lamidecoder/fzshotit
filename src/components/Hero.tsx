@@ -25,7 +25,7 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden flex flex-col justify-center">
       <div ref={bgRef} className="absolute -inset-[5%] transition-transform duration-200 ease-linear">
         <Image
-          src="/photos/DSC08906.jpg"
+          src="/photos/hero_couple.jpg"
           alt="FZShotit photography"
           fill
           priority
@@ -34,11 +34,12 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/40 to-ink/90" />
+      <div className="absolute inset-0 bg-ink/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink/80" />
 
       <div className="container-shell relative z-10 pt-24">
         <motion.p
-          className="mb-6 text-sm md:text-base font-semibold tracking-[0.22em] uppercase text-white drop-shadow-lg"
+          className="mb-6 text-sm tracking-[0.22em] uppercase text-white/50 font-medium"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}>
@@ -74,7 +75,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3, duration: 0.6 }}>
-        <span className="eyebrow text-white" style={{ writingMode: "vertical-rl" }}>Scroll</span>
+        <span className="text-white/40" style={{ writingMode: "vertical-rl", fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase" }}>Scroll</span>
         <span className="scroll-line" />
       </motion.div>
     </section>
