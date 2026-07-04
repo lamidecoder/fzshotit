@@ -23,18 +23,14 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col justify-center">
-      <div
-        ref={bgRef}
-        className="absolute -inset-[5%] transition-transform duration-200 ease-linear"
-      >
+      <div ref={bgRef} className="absolute -inset-[5%] transition-transform duration-200 ease-linear">
         <Image
           src="/photos/DSC08906.jpg"
-          alt="FZSHOTIT photography"
+          alt="FZShotit photography"
           fill
           priority
           sizes="120vw"
           className="object-cover object-center"
-          quality={85}
         />
       </div>
 
@@ -42,11 +38,10 @@ export default function Hero() {
 
       <div className="container-shell relative z-10 pt-24">
         <motion.p
-          className="eyebrow mb-6"
+          className="mb-6 text-sm md:text-base font-semibold tracking-[0.22em] uppercase text-white drop-shadow-lg"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
+          transition={{ delay: 0.4, duration: 0.6 }}>
           Photographer &amp; Content Creator, London
         </motion.p>
 
@@ -55,26 +50,20 @@ export default function Hero() {
           style={{ fontSize: "clamp(3.4rem, 13vw, 9.5rem)" }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Your day,
-          <br />
-          told in
-          <br />
+          transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
+          Your day,<br />told in<br />
           <span className="text-henna">honest light.</span>
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
-          className="mt-10"
-        >
+          transition={{ delay: 0.95, duration: 0.6 }}
+          className="mt-10">
           <Link
             href="/portfolio"
             className="inline-flex items-center gap-2 border border-bone/35 px-8 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
-            data-cursor="view"
-          >
+            data-cursor="view">
             View Portfolio
           </Link>
         </motion.div>
@@ -84,11 +73,8 @@ export default function Hero() {
         className="absolute bottom-9 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-      >
-        <span className="eyebrow" style={{ writingMode: "vertical-rl" }}>
-          Scroll
-        </span>
+        transition={{ delay: 1.3, duration: 0.6 }}>
+        <span className="eyebrow text-white" style={{ writingMode: "vertical-rl" }}>Scroll</span>
         <span className="scroll-line" />
       </motion.div>
     </section>
