@@ -31,43 +31,40 @@ export default function Hero() {
           priority
           sizes="120vw"
           className="object-cover"
-          style={{ objectPosition: "center 30%" }}
+          style={{ objectPosition: "center 40%" }}
         />
       </div>
 
-      {/* Same overlay style as before */}
-      <div className="absolute inset-0 bg-ink/60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/20 to-ink/90" />
+      <div className="absolute inset-0 bg-ink/55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/10 to-ink/80" />
 
-      <div className="container-shell relative z-10 pt-24">
+      <div className="container-shell relative z-10 pt-24 max-w-2xl">
 
-        {/* Eyebrow — same as before */}
         <motion.p
-          className="mb-6 text-sm tracking-[0.22em] uppercase text-white/50 font-medium"
+          className="mb-5 text-xs tracking-[0.25em] uppercase text-white/50 font-medium"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}>
           Photographer &amp; Content Creator, London
         </motion.p>
 
-        {/* Big headline — same size as original "Your day told in honest light" */}
         <motion.h1
-          className="font-display font-extrabold leading-[0.86] tracking-tight"
-          style={{ fontSize: "clamp(3.4rem, 13vw, 9.5rem)" }}
+          className="font-display font-extrabold leading-[0.9] tracking-tight"
+          style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.8rem)" }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
-          Rooted in<br />
+          Rooted in{" "}
           <span className="text-henna">Culture,</span><br />
-          Captured with<br />
+          Captured with{" "}
           <span className="text-henna">Intention.</span>
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
-          className="mt-10">
+          transition={{ delay: 1.0, duration: 0.6 }}
+          className="mt-8">
           <Link
             href="/portfolio"
             className="inline-flex items-center gap-2 border border-bone/35 px-8 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
