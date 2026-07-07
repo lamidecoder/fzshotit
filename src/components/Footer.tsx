@@ -23,12 +23,14 @@ export default function Footer() {
         <p className="eyebrow">Follow along</p>
         <div className="flex items-center gap-6">
           <a href="https://www.instagram.com/fzshotit" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 text-bone-dim hover:text-henna transition-colors" data-cursor="view">
+            className="flex items-center gap-2 hover:text-henna transition-colors" data-cursor="view">
             <IGIcon />
-            <span className="font-display font-bold text-xl text-bone hover:text-henna transition-colors">@fzshotit</span>
+            <span className="font-display font-bold text-xl text-bone hover:text-henna transition-colors">
+              FZShotit
+            </span>
           </a>
           <a href="https://www.tiktok.com/@fzshotit" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 text-bone-dim hover:text-henna transition-colors" data-cursor="view">
+            className="text-bone-dim hover:text-henna transition-colors" data-cursor="view">
             <TTIcon />
           </a>
         </div>
