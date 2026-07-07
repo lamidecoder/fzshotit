@@ -11,58 +11,14 @@ const CATS = [
   { src: "/photos/DSC08845.jpg", label: "Celebrations", href: "/portfolio/celebrations", span: "md:col-span-2" },
 ];
 
-const PORTRAITS = [
-  { src: "/photos/fatou_makeup.jpg", label: "Fatou" },
-  { src: "/photos/fatou_portrait.jpg", label: "Fatou" },
+const ALL_WORK = [
+  { src: "/photos/fatou_makeup.jpg", label: "Editorial" },
+  { src: "/photos/fatou_portrait.jpg", label: "Portrait" },
   { src: "/photos/DSC04847.jpg", label: "Portrait" },
-  { src: "/photos/IMG_7257.jpg", label: "Portrait" },
-  { src: "/photos/F37A6491-DD35-4C0F-ABE5-12D84573905A_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/E86DABF3-28D6-44B0-BCB7-E56190F64A20_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/10F4E1C7-2901-4562-8B68-1345FA0FB994_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/0F131351-6252-4417-A1AE-0952A1DA633A_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/82A0953F-F843-46D1-94C7-C590B2452161_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/F4254BDD-057E-4702-BBFF-398A6583EB48_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/9D847B1C-408B-4753-9294-A34A504006D9_1_105_c.jpg", label: "Portrait" },
-  { src: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg", label: "Portrait" },
-  // 20 new ones — no repeats
-  { src: "/photos/DSC04584.jpg", label: "Celebration" },
-  { src: "/photos/DSC04592.jpg", label: "Celebration" },
-  { src: "/photos/DSC05686.jpg", label: "Wedding" },
-  { src: "/photos/DSC05701.jpg", label: "Wedding" },
-  { src: "/photos/DSC08899.jpg", label: "Celebration" },
-  { src: "/photos/DSC08906.jpg", label: "Celebration" },
   { src: "/photos/DSC08407.jpg", label: "Editorial" },
-  { src: "/photos/IMG_0356.jpg", label: "Nikkah" },
-  { src: "/photos/IMG_0362.jpg", label: "Nikkah" },
-  { src: "/photos/IMG_2435.jpg", label: "Nikkah" },
-  { src: "/photos/IMG_2437.jpg", label: "Nikkah" },
-  { src: "/photos/IMG_5102.jpg", label: "Celebration" },
-  { src: "/photos/IMG_5987.jpg", label: "Celebration" },
-  { src: "/photos/IMG_5991.jpg", label: "Celebration" },
-  { src: "/photos/IMG_5992.jpg", label: "Celebration" },
   { src: "/photos/IMG_6675.jpg", label: "Wedding" },
-  { src: "/photos/IMG_7167.jpg", label: "Portrait" },
-  { src: "/photos/IMG_7324.jpg", label: "Nikkah" },
-  { src: "/photos/IMG_7446.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7447.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7448.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7449.jpg", label: "Portrait" },
-  { src: "/photos/IMG_7450.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7452.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7453.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7455.jpg", label: "Wedding" },
-  { src: "/photos/IMG_7456.jpg", label: "Portrait" },
-  { src: "/photos/IMG_7457.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7461.jpg", label: "Portrait" },
   { src: "/photos/IMG_7475.jpg", label: "Portrait" },
   { src: "/photos/IMG_7476.jpg", label: "Celebration" },
-  { src: "/photos/IMG_7477.jpg", label: "Henna" },
-  { src: "/photos/IMG_7478.jpg", label: "Henna" },
-  { src: "/photos/IMG_7480.jpg", label: "Henna" },
-  { src: "/photos/IMG_7481.jpg", label: "Wedding" },
-  { src: "/photos/_DSC0282.jpg", label: "Wedding" },
-  { src: "/photos/_DSC0675.jpg", label: "Wedding" },
-  { src: "/photos/_DSC1222.jpg", label: "Wedding" },
   { src: "/photos/51E53F34-0162-4EC3-BC8B-E863CD38E034.jpg", label: "Portrait" },
   { src: "/photos/74018F8D-DBB0-4184-BC50-8CB8D58EC5BE_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/7E1DEFB3-414D-48D1-8758-132D068155E9.jpg", label: "Portrait" },
@@ -72,6 +28,15 @@ const PORTRAITS = [
   { src: "/photos/0B8855EB-8FD1-493E-9C8A-5EF17E755754_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/09095525-532E-4DC9-965C-CEC49B83A789_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/4D262FC8-F699-450F-AD87-AC2CB248B3E8_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/F37A6491-DD35-4C0F-ABE5-12D84573905A_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/E86DABF3-28D6-44B0-BCB7-E56190F64A20_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/10F4E1C7-2901-4562-8B68-1345FA0FB994_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/0F131351-6252-4417-A1AE-0952A1DA633A_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/82A0953F-F843-46D1-94C7-C590B2452161_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/F4254BDD-057E-4702-BBFF-398A6583EB48_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/9D847B1C-408B-4753-9294-A34A504006D9_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg", label: "Wedding" },
+  { src: "/photos/IMG_2437.jpg", label: "Nikkah" },
 ];
 
 export default function PortfolioPage() {
@@ -112,7 +77,7 @@ export default function PortfolioPage() {
       <section className="container-shell py-12">
         <p className="eyebrow mb-8">All work</p>
         <div className="columns-2 md:columns-3 gap-3 space-y-3">
-          {PORTRAITS.map((p, i) => (
+          {ALL_WORK.map((p, i) => (
             <div key={p.src} className="break-inside-avoid">
               <ImageFrame src={p.src} alt={p.label} ratio="aspect-[3/4]" delay={i * 0.03} />
             </div>
