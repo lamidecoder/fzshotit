@@ -25,7 +25,7 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden flex flex-col justify-center">
       <div ref={bgRef} className="absolute -inset-[5%] transition-transform duration-200 ease-linear">
         <Image
-          src="/photos/hero_couple.jpg"
+          src="/photos/hero_mosque.jpg"
           alt="FZShotit photography"
           fill
           priority
@@ -34,15 +34,15 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-ink/70" />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink/80" />
+      <div className="absolute inset-0 bg-ink/65" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/80" />
 
       <div className="container-shell relative z-10 pt-24">
         <motion.p
-          className="mb-6 text-sm tracking-[0.22em] uppercase text-white/50 font-medium"
+          className="mb-3 text-sm tracking-[0.22em] uppercase text-white/50 font-medium"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}>
+          transition={{ delay: 0.3, duration: 0.6 }}>
           Photographer &amp; Content Creator, London
         </motion.p>
 
@@ -56,11 +56,19 @@ export default function Hero() {
           <span className="text-henna">honest light.</span>
         </motion.h1>
 
+        <motion.p
+          className="mt-6 text-bone/70 text-lg md:text-xl font-medium max-w-md"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}>
+          Rooted in Culture, Captured with Intention.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95, duration: 0.6 }}
-          className="mt-10">
+          transition={{ delay: 1.1, duration: 0.6 }}
+          className="mt-8">
           <Link
             href="/portfolio"
             className="inline-flex items-center gap-2 border border-bone/35 px-8 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
