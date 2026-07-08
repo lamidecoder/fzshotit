@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ImageFrame from "@/components/ImageFrame";
+import PortfolioGallery from "@/components/PortfolioGallery";
 
 export const metadata = { title: "Portfolio · FZShotit" };
 
@@ -76,13 +77,7 @@ export default function PortfolioPage() {
 
       <section className="container-shell py-12">
         <p className="eyebrow mb-8">All work</p>
-        <div className="columns-2 md:columns-3 gap-3 space-y-3">
-          {ALL_WORK.map((p, i) => (
-            <div key={p.src} className="break-inside-avoid">
-              <ImageFrame src={p.src} alt={p.label} ratio="aspect-[3/4]" delay={i * 0.03} />
-            </div>
-          ))}
-        </div>
+        <PortfolioGallery photos={ALL_WORK} />
       </section>
 
       <section className="container-shell text-center py-20">

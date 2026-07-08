@@ -1,45 +1,31 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Hero() {
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const isFinePointer = window.matchMedia("(pointer: fine)").matches;
-    if (!isFinePointer) return;
-    function onMove(e: MouseEvent) {
-      if (!bgRef.current) return;
-      const px = (e.clientX / window.innerWidth - 0.5) * 14;
-      const py = (e.clientY / window.innerHeight - 0.5) * 14;
-      bgRef.current.style.transform = `translate(${px}px, ${py}px)`;
-    }
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
-
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col justify-center">
-      <div ref={bgRef} className="absolute -inset-[5%] transition-transform duration-200 ease-linear">
-        <Image
-          src="/photos/hero_mosque.jpg"
-          alt="FZShotit photography"
-          fill
-          priority
-          sizes="120vw"
-          className="object-cover"
-          style={{ objectPosition: "center 40%" }}
-        />
+      {/* Ken Burns on the image */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="kenburns absolute inset-0">
+          <Image
+            src="/photos/hero_mosque.jpg"
+            alt="FZShotit photography"
+            fill
+            priority
+            sizes="120vw"
+            className="object-cover"
+            style={{ objectPosition: "center 40%" }}
+          />
+        </div>
       </div>
 
       <div className="absolute inset-0 bg-ink/55" />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/10 to-ink/80" />
 
       <div className="container-shell relative z-10 pt-24 max-w-2xl">
-
         <motion.p
           className="mb-5 text-xs tracking-[0.25em] uppercase text-white/50 font-medium"
           initial={{ opacity: 0, y: 10 }}
@@ -54,10 +40,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
-          Rooted in{" "}
-          <span className="text-henna">Culture,</span><br />
-          Captured with{" "}
-          <span className="text-henna">Intention.</span>
+          Rooted in <span className="text-henna">Culture,</span><br />
+          Captured with <span className="text-henna">Intention.</span>
         </motion.h1>
 
         <motion.div

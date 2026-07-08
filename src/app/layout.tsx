@@ -7,6 +7,7 @@ import Curtain from "@/components/Curtain";
 import RouteFade from "@/components/RouteFade";
 import Grain from "@/components/Grain";
 import Cursor from "@/components/Cursor";
+import StickyEnquire from "@/components/StickyEnquire";
 
 const display = Unbounded({
   subsets: ["latin"],
@@ -23,9 +24,8 @@ const body = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "FZSHOTIT · Wedding & Lifestyle Photography, London",
-  description:
-    "Fauziyah (FZSHOTIT) is a London-based photographer and content creator documenting weddings, Nikkahs, henna nights and celebrations across diverse cultures, with honesty and intention.",
+  title: "FZShotit · Wedding & Lifestyle Photography, London",
+  description: "Fauziyah (FZShotit) is a London-based photographer and content creator. Rooted in Culture, Captured with Intention.",
 };
 
 export default function RootLayout({
@@ -43,6 +43,7 @@ export default function RootLayout({
         <main>
           <RouteFade>{children}</RouteFade>
         </main>
+        <StickyEnquire />
         <Footer />
       </body>
     </html>
