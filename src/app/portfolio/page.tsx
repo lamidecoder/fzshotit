@@ -6,12 +6,13 @@ import PortfolioGallery from "@/components/PortfolioGallery";
 export const metadata = { title: "Portfolio - FZShotit" };
 
 const CATS = [
-  { src: "/photos/DSC05674.jpg", label: "Weddings", href: "/portfolio/weddings", span: "md:col-span-2 md:row-span-2" },
+  { src: "/photos/wedding_bento.jpg", label: "Weddings", href: "/portfolio/weddings", span: "md:col-span-2 md:row-span-2" },
   { src: "/photos/IMG_2432.jpg", label: "Nikkah", href: "/portfolio/nikkah", span: "" },
   { src: "/photos/IMG_7479.jpg", label: "Henna", href: "/portfolio/henna", span: "" },
   { src: "/photos/DSC08845.jpg", label: "Celebrations", href: "/portfolio/celebrations", span: "md:col-span-2" },
 ];
 
+// Exactly 24 photos — 3x8 desktop, 2x12 mobile
 const ALL_WORK = [
   { src: "/photos/fatou_makeup.jpg", label: "Editorial" },
   { src: "/photos/fatou_portrait.jpg", label: "Portrait" },
@@ -36,7 +37,6 @@ const ALL_WORK = [
   { src: "/photos/82A0953F-F843-46D1-94C7-C590B2452161_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/F4254BDD-057E-4702-BBFF-398A6583EB48_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/9D847B1C-408B-4753-9294-A34A504006D9_1_105_c.jpg", label: "Wedding" },
-  { src: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/IMG_2437.jpg", label: "Nikkah" },
 ];
 
@@ -73,7 +73,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* All work - EVEN grid, no masonry, consistent on all screens */}
+      {/* All work: exactly 24 photos — grid-cols-2 mobile (2x12), md:grid-cols-3 desktop (3x8) */}
       <section className="container-shell py-12">
         <p className="eyebrow mb-8">All work</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

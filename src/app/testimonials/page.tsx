@@ -15,30 +15,30 @@ const TESTIMONIALS = [
   {
     name: "Ajani & Oyinkansola",
     photo: "/photos/DSC05674.jpg",
-    quote: "Fauziyah's booking system was easy and smooth, and the process was straightforward from beginning to end. Even in a 3-hour booking she captured every moment, and I have pictures I will cherish for the rest of my life. Very professional and clear about what shots she wants and where. I will definitely be booking her again.",
+    quote: "Fauziyah's booking system was easy and smooth, and the process was straightforward from beginning to end. Even in a 3-hour booking she captured every moment, and I have pictures I will cherish for the rest of my life. Very professional and clear about what shots she wants and where.",
     highlight: [],
   },
   {
     name: "Abdul & Azeeza",
-    photo: "/photos/IMG_7257.jpg",
+    photo: "/photos/testimonial_abdul.jpg",
     quote: "Absolutely loved working with Fauziyah! She genuinely built my confidence along the way, especially as someone who is camera shy, I became comfortable very quickly and loved how our pictures came out. Even my mum was asking for her details for a photoshoot.",
     highlight: ["genuinely built my confidence"],
   },
   {
     name: "Hazal & Ilyas",
-    photo: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg",
+    photo: "/photos/testimonial_hazal.jpg",
     quote: "FZShotit guided us through every stage and made us feel completely at ease, capturing the most spectacular photos, and incredibly friendly throughout. Truly amazing at what she does.",
     highlight: ["guided us through every stage and made us feel completely at ease"],
   },
   {
     name: "Ameenah & Sherif",
-    photo: "/photos/IMG_7453.jpg",
+    photo: "/photos/testimonial_ameenah.jpg",
     quote: "Working with Fauziyah was absolutely great. She was very professional, came with so many ideas for photos, was understanding of my needs and produced the photos quickly. She has a real talent and I definitely recommend her.",
     highlight: ["She has a real talent and I definitely recommend her"],
   },
   {
     name: "Anike",
-    photo: "/photos/DSC04847.jpg",
+    photo: "/photos/IMG_7457.jpg",
     quote: "I had an amazing experience with FZShotit for my 25th birthday photoshoot. She was super welcoming, helped me get ready, and directed my poses really well. The pictures came out super nice. I would definitely recommend her.",
     highlight: ["She was super welcoming, helped me get ready, and directed my poses really well"],
   },
@@ -50,7 +50,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Hafsah",
-    photo: "/photos/IMG_0356.jpg",
+    photo: "/photos/IMG_7446.jpg",
     quote: "Fauziyah was incredibly patient and brought such a warm, bubbly energy to the session. She is very professional, guides you through every pose, shows you the photos as she takes them, and is always open to feedback. My parents loved the pictures too. Book her immediately.",
     highlight: ["Book her immediately"],
   },
@@ -58,7 +58,6 @@ const TESTIMONIALS = [
 
 function highlightText(text: string, highlights: string[]) {
   if (!highlights.length) return <span className="text-white">{text}</span>;
-  let result = text;
   const parts: React.ReactNode[] = [];
   let remaining = text;
   for (const h of highlights) {
@@ -95,9 +94,7 @@ export default function TestimonialsPage() {
 
   return (
     <>
-      {/* Full-bleed Pixieset-style testimonial */}
       <div className="relative w-full" style={{ height: "100svh", minHeight: "600px" }}>
-        {/* Background image */}
         {TESTIMONIALS.map((item, i) => (
           <div key={item.name}
             className={`absolute inset-0 transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}>
@@ -106,42 +103,35 @@ export default function TestimonialsPage() {
           </div>
         ))}
 
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-ink/65" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/40" />
 
-        {/* Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 text-center">
           <p className="text-white text-base md:text-xl leading-relaxed max-w-2xl font-medium" style={{ fontStyle: "italic" }}>
             &ldquo;{highlightText(t.quote, t.highlight)}&rdquo;
           </p>
         </div>
 
-        {/* Name at bottom */}
         <div className="absolute bottom-20 left-0 right-0 text-center">
           <p className="font-display font-bold text-white tracking-[0.2em] text-sm md:text-base uppercase">
             {t.name}
           </p>
         </div>
 
-        {/* Arrows + counter */}
         <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-8">
           <button onClick={() => { go(active - 1); pause(); }}
-            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2"
-            aria-label="Previous">
+            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2" aria-label="Previous">
             &#8592;
           </button>
           <span className="text-white/60 text-sm tracking-widest">
             {active + 1} / {TESTIMONIALS.length}
           </span>
           <button onClick={() => { go(active + 1); pause(); }}
-            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2"
-            aria-label="Next">
+            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2" aria-label="Next">
             &#8594;
           </button>
         </div>
 
-        {/* Dot indicators */}
         <div className="absolute top-8 left-0 right-0 flex items-center justify-center gap-2 pt-20">
           {TESTIMONIALS.map((_, i) => (
             <button key={i} onClick={() => { go(i); pause(); }}
@@ -151,7 +141,6 @@ export default function TestimonialsPage() {
         </div>
       </div>
 
-      {/* CTA */}
       <section className="container-shell py-24 text-center">
         <Reveal>
           <p className="eyebrow text-bone-dim mb-6">Ready to create something beautiful?</p>
