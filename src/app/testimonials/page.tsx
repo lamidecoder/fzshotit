@@ -8,20 +8,20 @@ import Link from "next/link";
 const TESTIMONIALS = [
   {
     name: "Samuel & Boluwatife",
-    photo: "/photos/DSC08845.jpg",
-    quote: "Fauziyah is an elite photographer, she has come through for me for my 25th birthday party and civil wedding and does not disappoint. She accommodates you, very creative with picture ideas and when she is working she goes straight into photographer mode. On top of her working with you, she will always make you feel special, think \"main character energy\" I highly recommend Fauziyah as your photographer!",
+    photo: "/photos/testimonial_samuel.jpg",
+    quote: "FZShotit is an elite photographer, she has come through for me for my 25th birthday party and civil wedding and does not disappoint. She accommodates you, very creative with picture ideas and when she is working she goes straight into photographer mode. On top of her working with you, she will always make you feel special, think \"main character energy\" I highly recommend FZShotit as your photographer!",
     highlight: ["does not disappoint", "main character energy"],
   },
   {
     name: "Ajani & Oyinkansola",
-    photo: "/photos/DSC05674.jpg",
-    quote: "Fauziyah's booking system was easy and smooth, and the process was straightforward from beginning to end. Even in a 3-hour booking she captured every moment, and I have pictures I will cherish for the rest of my life. Very professional and clear about what shots she wants and where.",
+    photo: "/photos/testimonial_ajani.jpg",
+    quote: "FZShotit's booking system was easy and smooth, and the process was straightforward from beginning to end. Even in a 3-hour booking she captured every moment, and I have pictures I will cherish for the rest of my life. Very professional and clear about what shots she wants and where.",
     highlight: [],
   },
   {
     name: "Abdul & Azeeza",
     photo: "/photos/testimonial_abdul.jpg",
-    quote: "Absolutely loved working with Fauziyah! She genuinely built my confidence along the way, especially as someone who is camera shy, I became comfortable very quickly and loved how our pictures came out. Even my mum was asking for her details for a photoshoot.",
+    quote: "Absolutely loved working with FZShotit! She genuinely built my confidence along the way, especially as someone who is camera shy, I became comfortable very quickly and loved how our pictures came out. Even my mum was asking for her details for a photoshoot.",
     highlight: ["genuinely built my confidence"],
   },
   {
@@ -33,7 +33,7 @@ const TESTIMONIALS = [
   {
     name: "Ameenah & Sherif",
     photo: "/photos/testimonial_ameenah.jpg",
-    quote: "Working with Fauziyah was absolutely great. She was very professional, came with so many ideas for photos, was understanding of my needs and produced the photos quickly. She has a real talent and I definitely recommend her.",
+    quote: "Working with FZShotit was absolutely great. She was very professional, came with so many ideas for photos, was understanding of my needs and produced the photos quickly. She has a real talent and I definitely recommend her.",
     highlight: ["She has a real talent and I definitely recommend her"],
   },
   {
@@ -51,7 +51,7 @@ const TESTIMONIALS = [
   {
     name: "Hafsah",
     photo: "/photos/IMG_7446.jpg",
-    quote: "Fauziyah was incredibly patient and brought such a warm, bubbly energy to the session. She is very professional, guides you through every pose, shows you the photos as she takes them, and is always open to feedback. My parents loved the pictures too. Book her immediately.",
+    quote: "FZShotit was incredibly patient and brought such a warm, bubbly energy to the session. She is very professional, guides you through every pose, shows you the photos as she takes them, and is always open to feedback. My parents loved the pictures too. Book her immediately.",
     highlight: ["Book her immediately"],
   },
 ];
@@ -89,7 +89,6 @@ export default function TestimonialsPage() {
   }, [paused]);
 
   function pause() { setPaused(true); setTimeout(() => setPaused(false), 7000); }
-
   const t = TESTIMONIALS[active];
 
   return (
@@ -102,36 +101,21 @@ export default function TestimonialsPage() {
               className="object-cover object-center" priority={i === 0} />
           </div>
         ))}
-
         <div className="absolute inset-0 bg-ink/65" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/40" />
-
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 text-center">
           <p className="text-white text-base md:text-xl leading-relaxed max-w-2xl font-medium" style={{ fontStyle: "italic" }}>
             &ldquo;{highlightText(t.quote, t.highlight)}&rdquo;
           </p>
         </div>
-
         <div className="absolute bottom-20 left-0 right-0 text-center">
-          <p className="font-display font-bold text-white tracking-[0.2em] text-sm md:text-base uppercase">
-            {t.name}
-          </p>
+          <p className="font-display font-bold text-white tracking-[0.2em] text-sm md:text-base uppercase">{t.name}</p>
         </div>
-
         <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-8">
-          <button onClick={() => { go(active - 1); pause(); }}
-            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2" aria-label="Previous">
-            &#8592;
-          </button>
-          <span className="text-white/60 text-sm tracking-widest">
-            {active + 1} / {TESTIMONIALS.length}
-          </span>
-          <button onClick={() => { go(active + 1); pause(); }}
-            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2" aria-label="Next">
-            &#8594;
-          </button>
+          <button onClick={() => { go(active - 1); pause(); }} className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2" aria-label="Previous">&#8592;</button>
+          <span className="text-white/60 text-sm tracking-widest">{active + 1} / {TESTIMONIALS.length}</span>
+          <button onClick={() => { go(active + 1); pause(); }} className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2" aria-label="Next">&#8594;</button>
         </div>
-
         <div className="absolute top-8 left-0 right-0 flex items-center justify-center gap-2 pt-20">
           {TESTIMONIALS.map((_, i) => (
             <button key={i} onClick={() => { go(i); pause(); }}
@@ -140,13 +124,10 @@ export default function TestimonialsPage() {
           ))}
         </div>
       </div>
-
       <section className="container-shell py-24 text-center">
         <Reveal>
           <p className="eyebrow text-bone-dim mb-6">Ready to create something beautiful?</p>
-          <Link href="/contact"
-            className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
-            data-cursor="view">
+          <Link href="/contact" className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300" data-cursor="view">
             Book me today
           </Link>
         </Reveal>
