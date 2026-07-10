@@ -51,7 +51,7 @@ export default function HomePage() {
       <section className="container-shell py-12">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <div className="col-span-2 md:col-span-1">
-            <ImageFrame src="/photos/DSC05674.jpg" alt="Azeezat and Abz" ratio="aspect-[4/5]" />
+            <ImageFrame src="/photos/wedding_bento.jpg" alt="Azeezat and Abz" ratio="aspect-[4/5]" />
           </div>
           <ImageFrame src="/photos/IMG_7446.jpg" alt="Graduation" ratio="aspect-[4/5]" />
           <ImageFrame src="/photos/IMG_2432.jpg" alt="Nikkah bride" ratio="aspect-[4/5]" />
