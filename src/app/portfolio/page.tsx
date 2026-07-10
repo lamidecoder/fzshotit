@@ -2,13 +2,16 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ImageFrame from "@/components/ImageFrame";
 import PortfolioGallery from "@/components/PortfolioGallery";
+
 export const metadata = { title: "Portfolio - FZShotit" };
+
 const CATS = [
   { src: "/photos/DSC05674.jpg", label: "Weddings", href: "/portfolio/weddings", span: "md:col-span-2 md:row-span-2" },
   { src: "/photos/IMG_2432.jpg", label: "Nikkah", href: "/portfolio/nikkah", span: "" },
   { src: "/photos/IMG_7479.jpg", label: "Henna", href: "/portfolio/henna", span: "" },
   { src: "/photos/DSC08845.jpg", label: "Celebrations", href: "/portfolio/celebrations", span: "md:col-span-2" },
 ];
+
 const ALL_WORK = [
   { src: "/photos/fatou_makeup.jpg", label: "Editorial" },
   { src: "/photos/fatou_portrait.jpg", label: "Portrait" },
@@ -36,38 +39,57 @@ const ALL_WORK = [
   { src: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/IMG_2437.jpg", label: "Nikkah" },
 ];
+
 export default function PortfolioPage() {
   return (
     <>
       <section className="container-shell pt-36 md:pt-44 pb-12">
         <Reveal>
           <p className="eyebrow mb-5">Portfolio</p>
-          <h1 className="font-display font-extrabold leading-[0.96]" style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)" }}>
+          <h1 className="font-display font-extrabold leading-[0.96]"
+            style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)" }}>
             A few favourite days.
           </h1>
         </Reveal>
       </section>
+
+      {/* Category bento */}
       <section className="container-shell pb-4">
         <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3">
           {CATS.map((item, i) => (
             <div key={item.label} className={item.span}>
               <Link href={item.href} className="group block relative h-full" data-cursor="view">
-                <ImageFrame src={item.src} alt={item.label} ratio={item.span.includes("row-span-2") ? "aspect-[4/5] md:h-full" : "aspect-[4/5]"} priority={i === 0} />
+                <ImageFrame src={item.src} alt={item.label}
+                  ratio={item.span.includes("row-span-2") ? "aspect-[4/5] md:h-full" : "aspect-[4/5]"}
+                  priority={i === 0} />
                 <div className="absolute inset-0 flex items-end p-5 bg-gradient-to-t from-ink/80 via-transparent to-transparent pointer-events-none">
-                  <span className="font-display font-semibold text-xl md:text-2xl text-bone group-hover:text-henna transition-colors">{item.label}</span>
+                  <span className="font-display font-semibold text-xl md:text-2xl text-bone group-hover:text-henna transition-colors">
+                    {item.label}
+                  </span>
                 </div>
               </Link>
             </div>
           ))}
         </div>
       </section>
+
+      {/* All work - EVEN grid, no masonry, consistent on all screens */}
       <section className="container-shell py-12">
         <p className="eyebrow mb-8">All work</p>
-        <PortfolioGallery photos={ALL_WORK} />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {ALL_WORK.map((p, i) => (
+            <Reveal key={p.src} delay={(i % 3) * 0.04}>
+              <ImageFrame src={p.src} alt={p.label} ratio="aspect-[3/4]" />
+            </Reveal>
+          ))}
+        </div>
       </section>
+
       <section className="container-shell text-center py-20">
         <Reveal>
-          <Link href="/contact" className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300" data-cursor="view">
+          <Link href="/contact"
+            className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
+            data-cursor="view">
             Book me today
           </Link>
         </Reveal>

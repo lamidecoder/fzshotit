@@ -1,102 +1,163 @@
 "use client";
+
 import { useRef, useEffect, useState, useCallback } from "react";
 import Reveal from "@/components/Reveal";
 import Image from "next/image";
 import Link from "next/link";
-function Hi({ children }: { children: string }) {
-  return <span className="text-henna font-semibold">{children}</span>;
-}
+
 const TESTIMONIALS = [
-  { name: "Samuel & Boluwatife", tag: "Birthday & Civil Wedding", photo: "/photos/DSC08845.jpg",
-    quote: <>"Fauziyah is an elite photographer. She came through for my 25th birthday and civil wedding and <Hi>does not disappoint</Hi>. Creative with picture ideas and on the day she goes straight into photographer mode. Think main character energy."</> },
-  { name: "Ajani & Oyinkansola", tag: "Wedding", photo: "/photos/DSC05674.jpg",
-    quote: <>"Fauziyah&rsquo;s booking system was easy and smooth. Even in a 3-hour booking she captured every moment, and I have pictures I will cherish for the rest of my life."</> },
-  { name: "Abdul & Azeeza", tag: "Portrait Session", photo: "/photos/IMG_7257.jpg",
-    quote: <>"Absolutely loved working with Fauziyah! She <Hi>genuinely built confidence</Hi> along the way, especially as someone who is camera shy. I became comfortable very quickly."</> },
-  { name: "Hazal & Ilyas", tag: "Nikkah", photo: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg",
-    quote: <><Hi>FZShotit guided us through every stage and made us feel completely at ease</Hi>, capturing the most spectacular photos. We could not have chosen anyone better.</> },
-  { name: "Ameenah & Sherif", tag: "Wedding", photo: "/photos/IMG_7453.jpg",
-    quote: <>"Working with Fauziyah was absolutely great. <Hi>She has a real talent and I&rsquo;d definitely recommend her</Hi>."</> },
-  { name: "Anike", tag: "Birthday Shoot", photo: "/photos/DSC04847.jpg",
-    quote: <>"I had an amazing experience for my 25th birthday photoshoot. <Hi>She was super welcoming and helped me get poses well</Hi>. The pictures came out super nice."</> },
-  { name: "Fataou", tag: "Editorial", photo: "/photos/fatou_makeup.jpg",
-    quote: <>"Working with FZShotit was a great experience. <Hi>Creative vision, executes it perfectly in her work</Hi>."</> },
-  { name: "Hafsah", tag: "Portrait Session", photo: "/photos/IMG_0356.jpg",
-    quote: <>"Fauziyah was incredibly patient and brought such a warm energy to the session. My parents loved the pictures too. <Hi>Book her immediately</Hi>."</> },
+  {
+    name: "Samuel & Boluwatife",
+    photo: "/photos/DSC08845.jpg",
+    quote: "Fauziyah is an elite photographer, she has come through for me for my 25th birthday party and civil wedding and does not disappoint. She accommodates you, very creative with picture ideas and when she is working she goes straight into photographer mode. On top of her working with you, she will always make you feel special, think \"main character energy\" I highly recommend Fauziyah as your photographer!",
+    highlight: ["does not disappoint", "main character energy"],
+  },
+  {
+    name: "Ajani & Oyinkansola",
+    photo: "/photos/DSC05674.jpg",
+    quote: "Fauziyah's booking system was easy and smooth, and the process was straightforward from beginning to end. Even in a 3-hour booking she captured every moment, and I have pictures I will cherish for the rest of my life. Very professional and clear about what shots she wants and where. I will definitely be booking her again.",
+    highlight: [],
+  },
+  {
+    name: "Abdul & Azeeza",
+    photo: "/photos/IMG_7257.jpg",
+    quote: "Absolutely loved working with Fauziyah! She genuinely built my confidence along the way, especially as someone who is camera shy, I became comfortable very quickly and loved how our pictures came out. Even my mum was asking for her details for a photoshoot.",
+    highlight: ["genuinely built my confidence"],
+  },
+  {
+    name: "Hazal & Ilyas",
+    photo: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg",
+    quote: "FZShotit guided us through every stage and made us feel completely at ease, capturing the most spectacular photos, and incredibly friendly throughout. Truly amazing at what she does.",
+    highlight: ["guided us through every stage and made us feel completely at ease"],
+  },
+  {
+    name: "Ameenah & Sherif",
+    photo: "/photos/IMG_7453.jpg",
+    quote: "Working with Fauziyah was absolutely great. She was very professional, came with so many ideas for photos, was understanding of my needs and produced the photos quickly. She has a real talent and I definitely recommend her.",
+    highlight: ["She has a real talent and I definitely recommend her"],
+  },
+  {
+    name: "Anike",
+    photo: "/photos/DSC04847.jpg",
+    quote: "I had an amazing experience with FZShotit for my 25th birthday photoshoot. She was super welcoming, helped me get ready, and directed my poses really well. The pictures came out super nice. I would definitely recommend her.",
+    highlight: ["She was super welcoming, helped me get ready, and directed my poses really well"],
+  },
+  {
+    name: "Fataou",
+    photo: "/photos/fatou_makeup.jpg",
+    quote: "Working with FZShotit was a great experience. She has a creative vision and executes it perfectly in her work.",
+    highlight: ["creative vision and executes it perfectly in her work"],
+  },
+  {
+    name: "Hafsah",
+    photo: "/photos/IMG_0356.jpg",
+    quote: "Fauziyah was incredibly patient and brought such a warm, bubbly energy to the session. She is very professional, guides you through every pose, shows you the photos as she takes them, and is always open to feedback. My parents loved the pictures too. Book her immediately.",
+    highlight: ["Book her immediately"],
+  },
 ];
+
+function highlightText(text: string, highlights: string[]) {
+  if (!highlights.length) return <span className="text-white">{text}</span>;
+  let result = text;
+  const parts: React.ReactNode[] = [];
+  let remaining = text;
+  for (const h of highlights) {
+    const idx = remaining.toLowerCase().indexOf(h.toLowerCase());
+    if (idx === -1) continue;
+    if (idx > 0) parts.push(<span key={`b-${h}`} className="text-white">{remaining.slice(0, idx)}</span>);
+    parts.push(<span key={`h-${h}`} className="text-henna font-bold">{remaining.slice(idx, idx + h.length)}</span>);
+    remaining = remaining.slice(idx + h.length);
+  }
+  if (remaining) parts.push(<span key="end" className="text-white">{remaining}</span>);
+  return <>{parts}</>;
+}
+
 export default function TestimonialsPage() {
-  const stripRef = useRef<HTMLDivElement>(null);
-  const autoRef = useRef<NodeJS.Timeout | null>(null);
   const [active, setActive] = useState(0);
+  const autoRef = useRef<NodeJS.Timeout | null>(null);
   const [paused, setPaused] = useState(false);
-  const scrollTo = useCallback((i: number) => {
-    const el = stripRef.current;
-    if (!el) return;
-    const card = el.children[i] as HTMLElement;
-    if (card) el.scrollTo({ left: card.offsetLeft - 24, behavior: "smooth" });
-    setActive(i);
+
+  const go = useCallback((i: number) => {
+    setActive(((i % TESTIMONIALS.length) + TESTIMONIALS.length) % TESTIMONIALS.length);
   }, []);
+
   useEffect(() => {
     if (autoRef.current) clearInterval(autoRef.current);
     autoRef.current = setInterval(() => {
-      if (!paused) setActive(prev => { const next = (prev + 1) % TESTIMONIALS.length; scrollTo(next); return next; });
-    }, 3200);
+      if (!paused) setActive(prev => (prev + 1) % TESTIMONIALS.length);
+    }, 4000);
     return () => { if (autoRef.current) clearInterval(autoRef.current); };
-  }, [paused, scrollTo]);
-  function handlePause() { setPaused(true); setTimeout(() => setPaused(false), 6000); }
+  }, [paused]);
+
+  function pause() { setPaused(true); setTimeout(() => setPaused(false), 7000); }
+
+  const t = TESTIMONIALS[active];
+
   return (
     <>
-      <section className="container-shell pt-36 md:pt-44 pb-10">
-        <Reveal>
-          <p className="eyebrow mb-4">Kind words</p>
-          <h1 className="font-display font-extrabold leading-[0.96]" style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)" }}>
-            From the people<br />I&rsquo;ve shot.
-          </h1>
-        </Reveal>
-      </section>
-      <section className="pb-8">
-        <div ref={stripRef}
-          className="flex gap-5 overflow-x-auto px-6 md:px-12 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
-          onPointerDown={handlePause} onTouchStart={handlePause}>
-          {TESTIMONIALS.map((t, i) => (
-            <div key={t.name} onClick={() => { scrollTo(i); handlePause(); }}
-              className={`shrink-0 w-[85vw] max-w-[340px] snap-start flex flex-col cursor-pointer transition-all duration-500 ${active === i ? "opacity-100 scale-100" : "opacity-40 scale-[0.97]"}`}
-              style={{ transformOrigin: "left center" }}>
-              <div className="relative w-full overflow-hidden bg-ink-soft">
-                <Image src={t.photo} alt={t.name} width={680} height={860} className="w-full h-auto object-contain block" />
-                <div className="absolute top-3 left-3 bg-ink/80 backdrop-blur-sm px-3 py-1">
-                  <span className="eyebrow text-henna" style={{ fontSize: "0.6rem" }}>{t.tag}</span>
-                </div>
-              </div>
-              <div className="p-5 bg-ink-soft border-t border-clay flex flex-col gap-3">
-                <p className="font-display font-bold text-bone text-base">{t.name}</p>
-                <div className="w-6 h-px bg-henna" />
-                <p className="text-bone-dim leading-relaxed text-sm">{t.quote}</p>
-              </div>
-            </div>
-          ))}
+      {/* Full-bleed Pixieset-style testimonial */}
+      <div className="relative w-full" style={{ height: "100svh", minHeight: "600px" }}>
+        {/* Background image */}
+        {TESTIMONIALS.map((item, i) => (
+          <div key={item.name}
+            className={`absolute inset-0 transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}>
+            <Image src={item.photo} alt={item.name} fill sizes="100vw"
+              className="object-cover object-center" priority={i === 0} />
+          </div>
+        ))}
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-ink/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/40" />
+
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 text-center">
+          <p className="text-white text-base md:text-xl leading-relaxed max-w-2xl font-medium" style={{ fontStyle: "italic" }}>
+            &ldquo;{highlightText(t.quote, t.highlight)}&rdquo;
+          </p>
         </div>
-        <div className="container-shell flex items-center gap-2 mt-5">
-          {TESTIMONIALS.map((_, i) => (
-            <button key={i} onClick={() => { scrollTo(i); handlePause(); }}
-              className={`transition-all duration-300 h-px ${active === i ? "w-8 bg-henna" : "w-4 bg-clay hover:bg-bone-dim"}`}
-              aria-label={`Testimonial ${i + 1}`} />
-          ))}
-          <span className="ml-auto eyebrow text-bone-dim/40 hidden md:block">
-            {String(active + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")}
+
+        {/* Name at bottom */}
+        <div className="absolute bottom-20 left-0 right-0 text-center">
+          <p className="font-display font-bold text-white tracking-[0.2em] text-sm md:text-base uppercase">
+            {t.name}
+          </p>
+        </div>
+
+        {/* Arrows + counter */}
+        <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-8">
+          <button onClick={() => { go(active - 1); pause(); }}
+            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2"
+            aria-label="Previous">
+            &#8592;
+          </button>
+          <span className="text-white/60 text-sm tracking-widest">
+            {active + 1} / {TESTIMONIALS.length}
           </span>
+          <button onClick={() => { go(active + 1); pause(); }}
+            className="text-white/70 hover:text-white transition-colors text-2xl px-4 py-2"
+            aria-label="Next">
+            &#8594;
+          </button>
         </div>
-        <div className="container-shell flex gap-3 mt-5">
-          <button onClick={() => { scrollTo((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); handlePause(); }}
-            className="border border-clay w-11 h-11 flex items-center justify-center hover:border-henna hover:text-henna transition-colors">&#8592;</button>
-          <button onClick={() => { scrollTo((active + 1) % TESTIMONIALS.length); handlePause(); }}
-            className="border border-clay w-11 h-11 flex items-center justify-center hover:border-henna hover:text-henna transition-colors">&#8594;</button>
+
+        {/* Dot indicators */}
+        <div className="absolute top-8 left-0 right-0 flex items-center justify-center gap-2 pt-20">
+          {TESTIMONIALS.map((_, i) => (
+            <button key={i} onClick={() => { go(i); pause(); }}
+              className={`rounded-full transition-all duration-300 ${i === active ? "w-6 h-1.5 bg-henna" : "w-1.5 h-1.5 bg-white/40 hover:bg-white/70"}`}
+              aria-label={`Go to ${i + 1}`} />
+          ))}
         </div>
-      </section>
-      <section className="container-shell pb-32 text-center mt-12">
+      </div>
+
+      {/* CTA */}
+      <section className="container-shell py-24 text-center">
         <Reveal>
           <p className="eyebrow text-bone-dim mb-6">Ready to create something beautiful?</p>
-          <Link href="/contact" className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300" data-cursor="view">
+          <Link href="/contact"
+            className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
+            data-cursor="view">
             Book me today
           </Link>
         </Reveal>

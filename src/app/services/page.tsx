@@ -116,7 +116,7 @@ export default function ServicesPage() {
           </div>
         </Reveal>
         <Reveal className="md:col-span-5" delay={0.1}>
-          <ImageFrame src="/photos/IMG_7461.jpg" alt="Content creation" ratio="aspect-[4/5]" />
+          <ImageFrame src="/photos/henna_madame.jpg" alt="Content creation" ratio="aspect-[4/5]" />
         </Reveal>
       </section>
 

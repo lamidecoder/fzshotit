@@ -15,7 +15,7 @@ export default function HomePage() {
         <div className="grid md:grid-cols-12 gap-8 md:gap-4 items-center">
           <Reveal className="md:col-span-5">
             <ImageFrame
-              src="/photos/IMG_6675.jpg"
+              src="/photos/portrait_pink.jpg"
               alt="FZShotit photography"
               ratio="aspect-[4/5]"
               priority
