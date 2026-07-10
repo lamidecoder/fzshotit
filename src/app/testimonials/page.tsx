@@ -1,8 +1,10 @@
+"use client";
+
+import { useRef, useEffect, useState } from "react";
 import Reveal from "@/components/Reveal";
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata = { title: "Testimonials · FZShotit" };
+import { motion, AnimatePresence } from "framer-motion";
 
 function Hi({ children }: { children: string }) {
   return <span className="text-henna font-semibold">{children}</span>;
@@ -11,16 +13,18 @@ function Hi({ children }: { children: string }) {
 const TESTIMONIALS = [
   {
     name: "Samuel & Boluwatife",
+    tag: "Birthday & Civil Wedding",
     photo: "/photos/DSC08845.jpg",
     quote: (
       <>
         Fauziyah is an elite photographer. She came through for my 25th birthday party and civil wedding and{" "}
-        <Hi>does not disappoint</Hi>. She accommodates you, is very creative with picture ideas, and on the day she goes straight into photographer mode. She will always make you feel special. Think main character energy.
+        <Hi>does not disappoint</Hi>. She accommodates you, is very creative with picture ideas, and on the day she goes straight into photographer mode. Think main character energy.
       </>
     ),
   },
   {
     name: "Ajani & Oyinkansola",
+    tag: "Wedding",
     photo: "/photos/DSC05674.jpg",
     quote: (
       <>
@@ -30,6 +34,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Abdul & Azeeza",
+    tag: "Portrait Session",
     photo: "/photos/IMG_7257.jpg",
     quote: (
       <>
@@ -39,6 +44,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Hazal & Ilyas",
+    tag: "Nikkah",
     photo: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg",
     quote: (
       <>
@@ -48,6 +54,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Ameenah & Sherif",
+    tag: "Wedding",
     photo: "/photos/IMG_7453.jpg",
     quote: (
       <>
@@ -58,6 +65,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Anike",
+    tag: "Birthday Shoot",
     photo: "/photos/DSC04847.jpg",
     quote: (
       <>
@@ -68,6 +76,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Fataou",
+    tag: "Editorial",
     photo: "/photos/fatou_makeup.jpg",
     quote: (
       <>
@@ -78,6 +87,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Hafsah",
+    tag: "Portrait Session",
     photo: "/photos/IMG_0356.jpg",
     quote: (
       <>
@@ -89,68 +99,133 @@ const TESTIMONIALS = [
 ];
 
 export default function TestimonialsPage() {
+  const stripRef = useRef<HTMLDivElement>(null);
+  const autoRef = useRef<NodeJS.Timeout | null>(null);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  function scrollTo(i: number) {
+    const el = stripRef.current;
+    if (!el) return;
+    const card = el.children[i] as HTMLElement;
+    if (!card) return;
+    el.scrollTo({ left: card.offsetLeft - 24, behavior: "smooth" });
+    setActive(i);
+  }
+
+  function startAuto() {
+    if (autoRef.current) clearInterval(autoRef.current);
+    autoRef.current = setInterval(() => {
+      if (paused) return;
+      setActive(prev => {
+        const next = (prev + 1) % TESTIMONIALS.length;
+        scrollTo(next);
+        return next;
+      });
+    }, 3200);
+  }
+
+  useEffect(() => {
+    startAuto();
+    return () => { if (autoRef.current) clearInterval(autoRef.current); };
+  }, [paused]);
+
+  function handlePause() {
+    setPaused(true);
+    setTimeout(() => setPaused(false), 6000);
+  }
+
   return (
     <>
-      <section className="container-shell pt-36 md:pt-44 pb-12">
+      <section className="container-shell pt-36 md:pt-44 pb-10">
         <Reveal>
+          <p className="eyebrow mb-4">Kind words</p>
           <h1
             className="font-display font-extrabold leading-[0.96]"
             style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)" }}>
-            From the people I&rsquo;ve shot.
+            From the people<br />I&rsquo;ve shot.
           </h1>
         </Reveal>
       </section>
 
-      {/* Horizontal scroll strip */}
-      <section className="pb-32">
-        <div className="flex gap-5 overflow-x-auto px-6 md:px-12 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory">
+      {/* Auto-scrolling strip */}
+      <section className="pb-8">
+        <div
+          ref={stripRef}
+          className="flex gap-5 overflow-x-auto px-6 md:px-12 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
+          onPointerDown={handlePause}
+          onTouchStart={handlePause}>
           {TESTIMONIALS.map((t, i) => (
-            <div
+            <motion.div
               key={t.name}
-              className="shrink-0 w-[88vw] max-w-[360px] snap-start flex flex-col bg-ink-soft border border-clay"
-            >
-              {/* Full image — no cropping */}
-              <div className="relative w-full overflow-hidden bg-ink">
+              onClick={() => { scrollTo(i); handlePause(); }}
+              className={`shrink-0 w-[85vw] max-w-[340px] snap-start flex flex-col cursor-pointer transition-all duration-500 ${
+                active === i ? "opacity-100" : "opacity-50 scale-[0.97]"
+              }`}
+              style={{ transformOrigin: "left center" }}>
+
+              {/* Full image */}
+              <div className="relative w-full overflow-hidden bg-ink-soft">
                 <Image
                   src={t.photo}
                   alt={t.name}
-                  width={720}
-                  height={900}
-                  className="w-full h-auto object-contain"
-                  style={{ display: "block" }}
+                  width={680}
+                  height={860}
+                  className="w-full h-auto object-contain block"
                 />
+                {/* Tag badge */}
+                <div className="absolute top-3 left-3 bg-ink/80 backdrop-blur-sm px-3 py-1">
+                  <span className="eyebrow text-henna text-[0.6rem]">{t.tag}</span>
+                </div>
               </div>
 
-              {/* Content below image */}
-              <div className="p-6 flex flex-col gap-3 flex-1">
-                {/* Name */}
+              {/* Quote below */}
+              <div className="p-5 bg-ink-soft border-t border-clay flex flex-col gap-3">
                 <p className="font-display font-bold text-bone text-base">{t.name}</p>
-
-                {/* Divider */}
-                <div className="w-8 h-px bg-henna" />
-
-                {/* Quote */}
-                <p className="text-bone-dim leading-relaxed text-sm flex-1">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
+                <div className="w-6 h-px bg-henna" />
+                <p className="text-bone-dim leading-relaxed text-sm">&ldquo;{t.quote}&rdquo;</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Scroll hint */}
-        <div className="container-shell flex items-center gap-3 mt-4">
-          <div className="flex gap-1.5">
-            {TESTIMONIALS.map((_, i) => (
-              <div key={i} className={`h-px w-6 ${i === 0 ? "bg-henna" : "bg-clay"}`} />
-            ))}
-          </div>
-          <p className="eyebrow text-bone-dim/50 md:hidden">Swipe to read more</p>
+        {/* Dot indicators */}
+        <div className="container-shell flex items-center gap-2 mt-5">
+          {TESTIMONIALS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { scrollTo(i); handlePause(); }}
+              className={`transition-all duration-400 rounded-none h-px ${
+                active === i ? "w-8 bg-henna" : "w-4 bg-clay hover:bg-bone-dim"
+              }`}
+              aria-label={`Go to testimonial ${i + 1}`}
+            />
+          ))}
+          <span className="ml-auto eyebrow text-bone-dim/40 hidden md:block">
+            {String(active + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* Prev / Next */}
+        <div className="container-shell flex gap-3 mt-6">
+          <button
+            onClick={() => { scrollTo((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); handlePause(); }}
+            className="border border-clay w-11 h-11 flex items-center justify-center hover:border-henna hover:text-henna transition-colors">
+            ←
+          </button>
+          <button
+            onClick={() => { scrollTo((active + 1) % TESTIMONIALS.length); handlePause(); }}
+            className="border border-clay w-11 h-11 flex items-center justify-center hover:border-henna hover:text-henna transition-colors">
+            →
+          </button>
+          <span className="ml-3 eyebrow text-bone-dim/40 self-center text-xs">
+            Swipe or tap arrows to browse
+          </span>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="container-shell pb-32 text-center">
+      <section className="container-shell pb-32 text-center mt-12">
         <Reveal>
           <p className="eyebrow text-bone-dim mb-6">Ready to create something beautiful?</p>
           <Link
