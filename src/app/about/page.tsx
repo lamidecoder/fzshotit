@@ -20,7 +20,7 @@ export default function AboutPage() {
       <section className="container-shell pb-20">
         <div className="grid md:grid-cols-12 gap-8 items-start">
           <Reveal className="md:col-span-5 md:sticky md:top-32">
-            <ImageFrame src="/photos/IMG_7475.jpg" alt="Fauziyah, FZShotit" ratio="aspect-[4/5]" priority />
+            <ImageFrame src="/photos/portrait_pink.jpg" alt="Fauziyah, FZShotit" ratio="aspect-[4/5]" priority />
           </Reveal>
           <Reveal className="md:col-span-7 flex flex-col gap-5" delay={0.1}>
             <p style={{ fontSize: "1.1rem", lineHeight: "1.75" }}>
