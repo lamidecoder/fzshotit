@@ -43,7 +43,7 @@ const TESTIMONIALS = [
     highlight: ["She was super welcoming, helped me get ready, and directed my poses really well"],
   },
   {
-    name: "Fataou",
+    name: "Fatou",
     photo: "/photos/fatou_makeup.jpg",
     quote: "Working with FZShotit was a great experience. She has a creative vision and executes it perfectly in her work.",
     highlight: ["creative vision and executes it perfectly in her work"],
