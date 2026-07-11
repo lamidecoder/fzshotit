@@ -8,7 +8,7 @@ const SLIDES = [
   { src: "/photos/FB148D1B-1B3A-4442-83C1-DB1CB0BF9741_1_105_c.jpg", label: "Weddings", note: "Full days, every tradition", href: "/portfolio/weddings" },
   { src: "/photos/DSC08845.jpg", label: "Celebrations", note: "Birthdays & milestones", href: "/portfolio/celebrations" },
   { src: "/photos/_DSC0282.jpg", label: "Weddings", note: "Full days, every tradition", href: "/portfolio/weddings" },
-  { src: "/photos/IMG_7479.jpg", label: "Henna", note: "Colour, hands, warmth", href: "/portfolio/henna" },
+  { src: "/photos/henna_blue.jpg", label: "Henna", note: "Colour, hands, warmth", href: "/portfolio/henna" },
   { src: "/photos/IMG_5102.jpg", label: "Celebrations", note: "Birthdays & milestones", href: "/portfolio/celebrations" },
   { src: "/photos/IMG_7324.jpg", label: "Nikkah", note: "Sacred & joyful", href: "/portfolio/nikkah" },
   { src: "/photos/DSC04584.jpg", label: "Celebrations", note: "Birthdays & milestones", href: "/portfolio/celebrations" },
