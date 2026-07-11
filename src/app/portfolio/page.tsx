@@ -8,7 +8,7 @@ export const metadata = { title: "Portfolio - FZShotit" };
 const CATS = [
   { src: "/photos/wedding_bento.jpg", label: "Weddings", href: "/portfolio/weddings", span: "md:col-span-2 md:row-span-2" },
   { src: "/photos/IMG_2432.jpg", label: "Nikkah", href: "/portfolio/nikkah", span: "" },
-  { src: "/photos/IMG_7479.jpg", label: "Henna", href: "/portfolio/henna", span: "" },
+  { src: "/photos/10F4E1C7-2901-4562-8B68-1345FA0FB994_1_105_c.jpg", label: "Henna", href: "/portfolio/henna", span: "" },
   { src: "/photos/DSC08845.jpg", label: "Celebrations", href: "/portfolio/celebrations", span: "md:col-span-2" },
 ];
 
