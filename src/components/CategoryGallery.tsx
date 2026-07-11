@@ -2,14 +2,8 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ImageFrame from "@/components/ImageFrame";
 
-export default function CategoryGallery({
-  title,
-  intro,
-  photos,
-}: {
-  title: string;
-  intro: string;
-  photos: string[];
+export default function CategoryGallery({ title, intro, photos }: {
+  title: string; intro: string; photos: string[];
 }) {
   return (
     <>
@@ -17,15 +11,12 @@ export default function CategoryGallery({
         <Reveal>
           <p className="eyebrow mb-5">Portfolio</p>
           <h1 className="font-display font-extrabold leading-[0.96]"
-            style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)" }}>
-            {title}
-          </h1>
+            style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)" }}>{title}</h1>
           <p className="text-bone-dim max-w-xl mt-5 leading-relaxed">{intro}</p>
         </Reveal>
       </section>
 
       <section className="container-shell pb-20">
-        {/* Even grid: 2 cols mobile (2x12=24), 3 cols desktop (3x8=24) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {photos.map((src, i) => (
             <Reveal key={src} delay={(i % 3) * 0.04}>

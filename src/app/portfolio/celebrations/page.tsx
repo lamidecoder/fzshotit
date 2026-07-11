@@ -21,7 +21,6 @@ export default function CelebrationsPage() {
         "/photos/IMG_7453.jpg",
         "/photos/IMG_7456.jpg",
         "/photos/IMG_7457.jpg",
-        "/photos/IMG_5102.jpg",
       ]}
     />
   );
