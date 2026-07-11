@@ -18,7 +18,6 @@ export default function CelebrationsPage() {
         "/photos/IMG_7449.jpg",
         "/photos/IMG_7450.jpg",
         "/photos/IMG_7452.jpg",
-        "/photos/IMG_7453.jpg",
         "/photos/IMG_7456.jpg",
         "/photos/IMG_7457.jpg",
       ]}

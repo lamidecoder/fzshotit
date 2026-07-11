@@ -17,9 +17,9 @@ export default function CategoryGallery({ title, intro, photos }: {
       </section>
 
       <section className="container-shell pb-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           {photos.map((src, i) => (
-            <Reveal key={src} delay={(i % 3) * 0.04}>
+            <Reveal key={src} delay={(i % 2) * 0.04}>
               <ImageFrame src={src} alt={`${title} ${i + 1}`} ratio="aspect-[3/4]" />
             </Reveal>
           ))}
