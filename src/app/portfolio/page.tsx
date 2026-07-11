@@ -30,7 +30,7 @@ const ALL_WORK = [
   { src: "/photos/E86DABF3-28D6-44B0-BCB7-E56190F64A20_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/10F4E1C7-2901-4562-8B68-1345FA0FB994_1_105_c.jpg", label: "Henna" },
   { src: "/photos/0F131351-6252-4417-A1AE-0952A1DA633A_1_105_c.jpg", label: "Wedding" },
-  { src: "/photos/82A0953F-F843-46D1-94C7-C590B2452161_1_105_c.jpg", label: "Henna" },
+  { src: "/photos/henna_blue.jpg", label: "Henna" },
   { src: "/photos/F4254BDD-057E-4702-BBFF-398A6583EB48_1_105_c.jpg", label: "Henna" },
   { src: "/photos/9D847B1C-408B-4753-9294-A34A504006D9_1_105_c.jpg", label: "Wedding" },
   { src: "/photos/708DF59D-4257-4010-8993-0BF3E8B99C57_1_105_c.jpg", label: "Nikkah" },
