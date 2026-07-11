@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ImageFrame from "@/components/ImageFrame";
-
 export default function CategoryGallery({ title, intro, photos }: {
   title: string; intro: string; photos: string[];
 }) {
@@ -15,7 +14,6 @@ export default function CategoryGallery({ title, intro, photos }: {
           <p className="text-bone-dim max-w-xl mt-5 leading-relaxed">{intro}</p>
         </Reveal>
       </section>
-
       <section className="container-shell pb-20">
         <div className="grid grid-cols-2 gap-3">
           {photos.map((src, i) => (
@@ -25,12 +23,9 @@ export default function CategoryGallery({ title, intro, photos }: {
           ))}
         </div>
       </section>
-
       <section className="container-shell text-center pb-28">
         <Reveal>
-          <Link href="/contact"
-            className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300"
-            data-cursor="view">
+          <Link href="/contact" className="inline-block border border-bone/35 px-10 py-4 eyebrow hover:bg-bone hover:text-ink transition-colors duration-300" data-cursor="view">
             Book me today
           </Link>
         </Reveal>
