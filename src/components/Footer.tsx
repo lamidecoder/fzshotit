@@ -19,7 +19,8 @@ function TTIcon() {
 export default function Footer() {
   return (
     <footer className="border-t border-clay mt-24">
-      {/* Main footer */}
+
+      {/* Social + copyright */}
       <div className="container-shell py-16 flex flex-col items-center text-center gap-5">
         <p className="eyebrow">Follow along</p>
         <div className="flex items-center gap-6">
@@ -34,37 +35,43 @@ export default function Footer() {
           </a>
         </div>
         <p className="text-xs text-bone-dim mt-4">
-          &copy; {new Date().getFullYear()} FZShotit, London, United Kingdom
+          &copy; {new Date().getFullYear()} FZShotit &mdash; London, United Kingdom
         </p>
       </div>
 
-      {/* Agency credit — subtle, elegant */}
-      <div className="border-t border-clay/50">
-        <div className="container-shell py-5 flex items-center justify-center gap-3">
-          <div className="h-px flex-1 bg-clay/40" />
-          <a
-            href="mailto:nexushouseuk@gmail.com"
-            className="group flex items-center gap-2.5 text-bone-dim/30 hover:text-bone-dim transition-colors duration-500"
-            data-cursor="view"
+      {/* Agency credit — premium, full-width strip */}
+      <a
+        href="mailto:nexushouseuk@gmail.com"
+        className="group block w-full border-t border-clay/40 bg-[#0d0d0d] hover:bg-[#111] transition-colors duration-700"
+        data-cursor="view"
+      >
+        <div className="container-shell flex items-center justify-between py-4">
+          {/* Left: wordmark */}
+          <span
+            className="font-display font-bold tracking-tight text-bone/20 group-hover:text-bone/50 transition-colors duration-700"
+            style={{ fontSize: "0.8rem", letterSpacing: "0.05em" }}
           >
-            <span style={{
-              fontSize: "0.6rem",
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              fontWeight: 500,
-            }}>
-              Crafted by
-            </span>
-            <span
-              className="font-display font-bold group-hover:text-bone transition-colors duration-500"
-              style={{ fontSize: "0.75rem", letterSpacing: "0.08em" }}
-            >
-              Nexus House
-            </span>
-          </a>
-          <div className="h-px flex-1 bg-clay/40" />
+            NEXUS HOUSE
+          </span>
+
+          {/* Centre: tagline */}
+          <span
+            className="hidden md:block text-bone/15 group-hover:text-bone/35 transition-colors duration-700 font-body"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase" }}
+          >
+            Design &amp; Development
+          </span>
+
+          {/* Right: subtle arrow */}
+          <span
+            className="text-bone/15 group-hover:text-henna transition-colors duration-700"
+            style={{ fontSize: "0.75rem", letterSpacing: "0.2em" }}
+          >
+            nexushouseuk@gmail.com &nbsp;&#8599;
+          </span>
         </div>
-      </div>
+      </a>
+
     </footer>
   );
 }
