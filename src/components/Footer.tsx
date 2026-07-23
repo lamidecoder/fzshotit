@@ -39,36 +39,37 @@ export default function Footer() {
         </p>
       </div>
 
-      {/* Agency credit — premium, full-width strip */}
+      {/* Agency credit strip — fully responsive */}
       <a
         href="mailto:nexushouseuk@gmail.com"
         className="group block w-full border-t border-clay/40 bg-[#0d0d0d] hover:bg-[#111] transition-colors duration-700"
         data-cursor="view"
       >
-        <div className="container-shell flex items-center justify-between py-4">
-          {/* Left: wordmark */}
+        <div className="container-shell py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-0">
+
+          {/* Left: credit text — always visible */}
           <span
-            className="font-display font-bold tracking-tight text-bone/20 group-hover:text-bone/50 transition-colors duration-700"
-            style={{ fontSize: "0.8rem", letterSpacing: "0.05em" }}
+            className="font-display font-bold text-bone/25 group-hover:text-bone/60 transition-colors duration-700"
+            style={{ fontSize: "0.75rem", letterSpacing: "0.06em" }}
           >
             Website created by Nexus House
           </span>
 
-          {/* Centre: tagline */}
+          {/* Right: email — hidden on very small screens, shown md+ */}
           <span
-            className="hidden md:block text-bone/15 group-hover:text-bone/35 transition-colors duration-700 font-body"
-            style={{ fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase" }}
-          >
-            
-          </span>
-
-          {/* Right: subtle arrow */}
-          <span
-            className="text-bone/15 group-hover:text-henna transition-colors duration-700"
-            style={{ fontSize: "0.75rem", letterSpacing: "0.2em" }}
+            className="hidden md:block text-bone/20 group-hover:text-henna transition-colors duration-700"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase" }}
           >
             nexushouseuk@gmail.com &nbsp;&#8599;
           </span>
+
+          {/* Mobile-only: just the arrow */}
+          <span
+            className="md:hidden text-bone/20 group-hover:text-henna transition-colors duration-700 text-xs"
+          >
+            nexushouseuk@gmail.com &#8599;
+          </span>
+
         </div>
       </a>
 
