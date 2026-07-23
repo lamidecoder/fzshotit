@@ -22,7 +22,7 @@ export default function WeddingsPage() {
         "/photos/IMG_6675.jpg",
         "/photos/testimonial_ajani.jpg",
         "/photos/0F131351-6252-4417-A1AE-0952A1DA633A_1_105_c.jpg",
-        "/photos/IMG_7455.jpg",
+        "/photos/wedding_bride_veil.jpg",
         "/photos/E86DABF3-28D6-44B0-BCB7-E56190F64A20_1_105_c.jpg",
       ]}
     />
