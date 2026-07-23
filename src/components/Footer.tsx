@@ -51,7 +51,7 @@ export default function Footer() {
             className="font-display font-bold tracking-tight text-bone/20 group-hover:text-bone/50 transition-colors duration-700"
             style={{ fontSize: "0.8rem", letterSpacing: "0.05em" }}
           >
-            NEXUS HOUSE
+            Website created by Nexus House
           </span>
 
           {/* Centre: tagline */}
@@ -59,7 +59,7 @@ export default function Footer() {
             className="hidden md:block text-bone/15 group-hover:text-bone/35 transition-colors duration-700 font-body"
             style={{ fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase" }}
           >
-            Design &amp; Development
+            
           </span>
 
           {/* Right: subtle arrow */}
