@@ -19,8 +19,6 @@ function TTIcon() {
 export default function Footer() {
   return (
     <footer className="border-t border-clay mt-24">
-
-      {/* Social */}
       <div className="container-shell py-16 flex flex-col items-center text-center gap-5">
         <p className="eyebrow">Follow along</p>
         <div className="flex items-center gap-6">
@@ -34,44 +32,10 @@ export default function Footer() {
             <TTIcon />
           </a>
         </div>
+        <p className="text-xs text-bone-dim mt-4">
+          &copy; {new Date().getFullYear()} FZShotit &mdash; London, United Kingdom
+        </p>
       </div>
-
-      {/* Bottom bar — 3 column like Sophie Dallamore */}
-      <div className="border-t border-clay">
-        <div className="container-shell py-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 items-center">
-
-          {/* Left: FZShotit info */}
-          <div className="flex flex-col gap-1">
-            <p className="text-sm text-bone-dim">Photographer &amp; Content Creator</p>
-            <p className="text-sm text-bone-dim">&copy; {new Date().getFullYear()} FZShotit, London</p>
-          </div>
-
-          {/* Centre: Site by Nexus House — orange */}
-          <div className="flex justify-start md:justify-center">
-            <a
-              href="mailto:nexushouseuk@gmail.com"
-              className="text-sm hover:opacity-70 transition-opacity"
-              style={{ color: "#C2502B" }}
-              data-cursor="view"
-            >
-              Site by Nexus House
-            </a>
-          </div>
-
-          {/* Right: email only */}
-          <div className="flex flex-col gap-1 md:items-end">
-            <a
-              href="mailto:nexushouseuk@gmail.com"
-              className="text-sm text-bone-dim hover:text-bone transition-colors"
-              data-cursor="view"
-            >
-              nexushouseuk@gmail.com
-            </a>
-          </div>
-
-        </div>
-      </div>
-
     </footer>
   );
 }
