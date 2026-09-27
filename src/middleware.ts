@@ -2,10 +2,14 @@
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
-  // Use Europe/London timezone so the block triggers correctly regardless of Vercel's UTC clock
-  const now = new Date()
-  const londonDate = new Date(now.toLocaleString('en-GB', { timeZone: 'Europe/London' }))
-  const day = londonDate.getDate()
+  // Intl.DateTimeFormat is Edge Runtime safe; avoids the toLocaleString -> new Date() parse issue
+  const day = parseInt(
+    new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      day: 'numeric',
+    }).format(new Date()),
+    10
+  )
 
   if (day >= 26) {
     const html = `<!DOCTYPE html>
